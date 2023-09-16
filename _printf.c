@@ -17,8 +17,7 @@ while (*format)
 if (*format != '%')
 {
 write(1, format, 1);
-char_count++;
-}
+char_count++; }
 else
 {
 format++;
@@ -27,14 +26,12 @@ break;
 if (*format == '%')
 {
 write(1, format, 1);
-char_count++;
-}
+char_count++; }
 else if (*format == 'c')
 {
 char c = va_arg(args, int);
 write(1, &c, 1);
-char_count++;
-}
+char_count++; }
 else if (*format == 's')
 {
 char *str = va_arg(args, char*);
@@ -43,10 +40,7 @@ while (str[i] != '\0')
 i++;
 write(1, str, i);
 char_count += i;
-}
-}
-format++;
-}
+}}
+format++; }
 va_end(args);
-return (char_count);
-}
+return (char_count); }
