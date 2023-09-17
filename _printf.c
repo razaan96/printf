@@ -41,7 +41,7 @@ int i = 0;
 while (str[i] != '\0')
 i++;
 write(1, str, i);
-char_count += i;
+char_count += (i - 1);
 }}
 format++; }
 va_end(args);
