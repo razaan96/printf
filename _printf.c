@@ -19,7 +19,7 @@ while (*format)
 if (*format != '%')
 {
 write(1, format, 1);
-char_count++; }
+}
 else
 {
 format++;
@@ -41,8 +41,10 @@ int i = 0;
 while (str[i] != '\0')
 i++;
 write(1, str, i);
-char_count += i;
-}}
+char_count += (i - 1);
+}
+char_count += 1;
+}
 format++; }
 va_end(args);
 return (char_count); }
