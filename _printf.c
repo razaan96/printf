@@ -42,9 +42,7 @@ while (str[i] != '\0')
 i++;
 write(1, str, i);
 char_count += i;
-}
-char_count += 1;
-}
+}}
 format++; }
 va_end(args);
 return (char_count); }
