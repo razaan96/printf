@@ -19,6 +19,7 @@ while (*format)
 if (*format != '%')
 {
 write(1, format, 1);
+char_count++;
 }
 else
 {
