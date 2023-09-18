@@ -4,7 +4,7 @@
 /* C standard library header files */
 #include <stdarg.h>
 #include <unistd.h>
-
+#include <stdlib.h>
 /* function prototypes */
 int putchr(char c);
 int  _printf(const char *format, ...);
