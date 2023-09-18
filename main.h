@@ -11,6 +11,6 @@ int  _printf(const char *format, ...);
 int put_s(char *string);
 int put_int(int integer);
 int my_puts(char *string);
-void getint(int number);
+int getint(int number);
 
 #endif /* HEADER_H */
