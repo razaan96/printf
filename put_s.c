@@ -1,21 +1,19 @@
 #include "main.h"
 /**
-*put_s - function
+*put_s - function print string
 *@string:the string
-*Return: 0 the rvalue
+*Return: 0 thecount
 */
 int put_s(char *string)
 {
-int indx = 0, r_val = 0;
+int count = 0;
 
 if (string)
 {
-while (string[indx] != '\0')
+for (count = 0; string[count] != '\0'; count++)
 {
-putchr(string[indx]);
-r_val += 1;
-indx++;
+putchr(string[count]);
 }
 }
-return (r_val);
+return (count);
 }

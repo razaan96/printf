@@ -36,12 +36,8 @@ else if (format[i + 1] == '%')
 putchr('%');
 i++;
 }
-else if ((format[i + 1] == 'd') || (format[i + 1] == 'i'))
-{
-getint(va_arg(args, int));
-i++;
-}
 char_count += 1;
 }
+va_end(args);
 return (char_count);
 }
