@@ -16,7 +16,7 @@ if (format[0] == '%' && format[1] == ' ' && !format[2])
 return (-1);
 for ( ; format[i] != '\0'; i++)
 {
-if (*format != '%')
+if (format[i] != '%')
 {
 putchr(format[i]);
 }
@@ -36,12 +36,7 @@ else if (format[i + 1] == '%')
 putchr('%');
 i++;
 }
-else if ((format[i + 1] == 'd') || (format[i + 1] == 'i'))
-{
-getint(va_arg(args, int));
-i++;
-}
 char_count += 1;
-va_end(args);
 }
-return (char_count); }
+return (char_count);
+}
