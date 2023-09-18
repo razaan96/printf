@@ -1,10 +1,16 @@
-#ifndef MAIN_H
-#define MAIN_H
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
-int _printf(const char *format, ...);
-int binary(int num);
-int octal(int num);
+#ifndef HEADER_H
+#define HEADER_H
 
-#endif
+/* C standard library header files */
+#include <stdarg.h>
+#include <unistd.h>
+
+/* function prototypes */
+int putchr(char c);
+int  _printf(const char *format, ...);
+int put_s(char *string);
+int put_int(int integer);
+int my_puts(char *string);
+void getint(int number);
+
+#endif /* HEADER_H */
