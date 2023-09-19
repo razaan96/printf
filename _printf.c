@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 va_list args;
- int i, char_count = 0;
+int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 va_start(args, format);
@@ -24,15 +24,19 @@ i++; }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 char *str;
+int leng;
 str = va_arg(args, char *);
-if (str)
+if (str == NULL)
 {
-char_count += (put_s(str) - 1);
+str = "(null)";
+leng = put_s(str);
+char_count += (leng - 1);
 i++; }
 else
 {
-char_count += put_s("(null)");
-i++; }}
+leng = put_s(str);
+i++;
+char_count += (leng - 1); }}
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
@@ -42,8 +46,6 @@ else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 int leng = va_arg(args, int);
 char_count += put_int(leng);
 i++; }
-char_count += 1;
-}
+char_count += 1; }
 va_end(args);
-return (char_count);
-}
+return (char_count); }

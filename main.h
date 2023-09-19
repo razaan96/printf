@@ -13,5 +13,7 @@ int put_int(int integer);
 int my_puts(char *string);
 int getint(int number);
 int put_int(int in);
+int _strlen(char *s);
+int _strlenc(const char *s);
 
 #endif

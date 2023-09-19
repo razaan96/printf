@@ -18,5 +18,6 @@ count++;
 for (i = 0; i < count; i++)
 putchr(string[i]);
 }
+
 return (count);
 }
