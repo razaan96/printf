@@ -42,7 +42,7 @@ i++; }
 else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 {
 int leng = va_arg(args, int);
-char_count += put_int(leng);
+char_count += (put_int(leng) - 1);
 i++; }
 char_count += 1; }
 va_end(args);
