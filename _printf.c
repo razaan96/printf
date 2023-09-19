@@ -24,7 +24,6 @@ else if (format[i] == '%' && format[i + 1] == 'c')
 char c = va_arg(args, int);
 putchr(c);
 char_count++;
-i++;
 }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
@@ -32,14 +31,18 @@ char *str = va_arg(args, char *);
 if (str == NULL || *str == '\0')
 str = "(null)";
 char_count += put_s(str);
-i++;
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
 char_count++;
-i++;
 }
+else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+{
+int num = va_arg(args, int);
+char_count += put_int(num);
+}
+i++;
 }
 va_end(args);
 return (char_count);
