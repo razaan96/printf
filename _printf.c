@@ -32,16 +32,15 @@ char *str = va_arg(args, char *);
 if (str)
 {
 char_count += put_s(str);
-}
-else
-{
 char_count += put_s("(null)");
 }
+i++;
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
 char_count++;
+i++;
 }
 }
 va_end(args);
