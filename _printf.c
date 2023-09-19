@@ -34,10 +34,7 @@ else if (format[i] == '%' && format[i + 1] == '%')
 putchr('%');
 i++;
 }
-else
-{
-putchr('%');
-}
+char_count += 1;
 }
 va_end(args);
 return (char_count);
