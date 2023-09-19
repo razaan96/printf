@@ -20,6 +20,7 @@ putchr(format[i]);
 }
 else if (format[i] == '%' && format[i + 1])
 {
+i++;
 if (format[i + 1] == 'c')
 {
 char c = va_arg(args, int);
@@ -41,8 +42,6 @@ else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 int num = va_arg(args, int);
 char_count += put_int(num);
 }
-char_count++;
-i++;
 }
 }
 va_end(args);
