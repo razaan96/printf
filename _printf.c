@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 /**
 *_printf - a function print formatted text to output
 *Return: The number of characters and bytes printed
@@ -24,7 +23,8 @@ else if (format[i] == '%' && format[i + 1] == 'c')
 {
 char c = va_arg(args, int);
 putchr(c);
-char_count++, i++;
+char_count++;
+i++;
 }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
@@ -41,7 +41,7 @@ char_count += put_s("(null)");
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
-char_count++, i++;
+char_count++;
 }
 }
 va_end(args);
