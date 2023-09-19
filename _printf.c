@@ -11,37 +11,36 @@ va_list args;
 unsigned int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
-if (format[0] == '%' && format[1] == ' ' && !format[2])
-return (-1);
 va_start(args, format);
 for (i = 0; format && format[i] != '\0'; i++)
 {
 if (format[i] != '%')
 {
-putchr(format[i]);
-}
+putchr(format[i]); }
 else if (format[i] == '%' && format[i + 1] == 'c')
 {
 putchr(va_arg(args, int));
-i++;
-}
+i++; }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
-int leng = put_s(va_arg(args, char *));
-char_count += (leng - 1);
-i++;
-}
+char *str = va_arg(args, char *);
+if (*str)
+{
+char_count += put_s(str);
+i++; }
+else
+{
+char_count += put_s("(null)");
+i++; }}
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
-i++;
-}
+i++; }
 else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 {
 int leng = va_arg(args, int);
 char_count += put_int(leng);
-i++;
-}
+i++; }
 char_count += 1;
 }
 va_end(args);
