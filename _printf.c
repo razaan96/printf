@@ -29,16 +29,10 @@ i++;
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 char *str = va_arg(args, char *);
-if (*str)
-{
+if (str == NULL || *str == '\0')
+str = "(null)";
 char_count += put_s(str);
 i++;
-}
-else
-{
-char_count += put_s("(null)");
-i++;
-}
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {

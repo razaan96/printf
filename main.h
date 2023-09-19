@@ -12,7 +12,5 @@ int put_s(char *string);
 int put_int(int integer);
 int my_puts(char *string);
 int getint(int number);
-int put_int(int in);
-int _printf_int(const char *format, ...);
 
 #endif
