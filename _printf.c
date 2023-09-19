@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int i, char_count = 0;
+unsigned int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 if (format[0] == '%' && format[1] == ' ' && !format[2])
@@ -23,18 +23,18 @@ putchr(format[i]);
 else if (format[i + 1] == 'c')
 {
 putchr(va_arg(args, int));
-i++;
+i += 1;
 }
 else if (format[i + 1] == 's')
 {
 int leng = put_s(va_arg(args, char *));
-i++;
+i += 1;
 char_count += (leng - 1);
 }
 else if (format[i + 1] == '%')
 {
 putchr('%');
-i++;
+i += 1;
 }
 char_count += 1;
 }
