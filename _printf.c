@@ -21,39 +21,30 @@ char_count++;
 }
 else if (format[i] == '%' && format[i + 1] == 'c')
 {
-<<<<<<< HEAD
-putchr(va_arg(args, int));
-i += 1;
-=======
 char c = va_arg(args, int);
 putchr(c);
 char_count++;
 i++;
->>>>>>> 18e419d932effd27d25e7b7766fb7ebdfa337575
 }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
-int leng = put_s(va_arg(args, char *));
-i += 1;
-char_count += (leng - 1);
-=======
 char *str = va_arg(args, char *);
-if (str)
+if (*str)
+{
 char_count += put_s(str);
+i++;
+}
 else
+{
 char_count += put_s("(null)");
 i++;
->>>>>>> 18e419d932effd27d25e7b7766fb7ebdfa337575
+}
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
-<<<<<<< HEAD
-i += 1;
-=======
 char_count++;
 i++;
->>>>>>> 18e419d932effd27d25e7b7766fb7ebdfa337575
 }
 }
 va_end(args);
