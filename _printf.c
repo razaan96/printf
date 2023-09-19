@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-unsigned int i, char_count = 0;
+ int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 va_start(args, format);
@@ -24,7 +24,7 @@ i++; }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 char *str = va_arg(args, char *);
-if (*str)
+if (*str && str)
 {
 char_count += (put_s(str) - 1);
 i++; }
