@@ -24,22 +24,20 @@ i++; }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 char *str;
-int leng;
-str = va_arg(args, char *);
+str = (va_arg(args, char *));
 if (str == NULL)
 {
 str = "(null)";
-leng = put_s(str);
-char_count += (leng - 1);
+char_count += (put_s(str));
 i++; }
 else
 {
-leng = put_s(str);
+int leng = put_s(str);
 i++;
 char_count += (leng - 1); }}
 else if (format[i] == '%' && format[i + 1] == '%')
 {
-putchr('%');
+putchr(37);
 i++; }
 else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 {
