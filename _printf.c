@@ -1,8 +1,10 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
 /**
-*_printf - program
-*Return:the number of characters printed
-*@format:parameter
+*_printf - a function print formatted text to output
+*Return:the number of characters, bytes and numbers printed
+*@format: parameter
 *@...:argument
 */
 int _printf(const char *format, ...)

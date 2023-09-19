@@ -1,8 +1,9 @@
 #include "main.h"
+#include <unistd.h>
 /**
-*put_s - function print string
-*@string:the string
-*Return: 0 thecount
+*put_s - function print a string
+*@string: the string
+*Return: the number of character printed
 */
 int put_s(char *string)
 {
@@ -10,9 +11,13 @@ int count = 0;
 
 if (string)
 {
-for (count = 0; string[count] != '\0'; count++)
+while (string[count] != '\0')
 {
-putchr(string[count]);
+count++;
+}
+if (count > 0)
+{
+write(1, string, count);
 }
 }
 return (count);
