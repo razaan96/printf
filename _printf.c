@@ -23,8 +23,9 @@ putchr(va_arg(args, int));
 i++; }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
-char *str = va_arg(args, char *);
-if (*str && str)
+char *str;
+str = va_arg(args, char *);
+if (str)
 {
 char_count += (put_s(str) - 1);
 i++; }
