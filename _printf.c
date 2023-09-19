@@ -1,9 +1,9 @@
 #include "main.h"
 /**
 *_printf - a function print formatted text to output
-*Return: The number of characters and bytes printed
 *@format: The format string
 *@...: Additional arguments
+*Return: The number of characters and bytes printed
 */
 int _printf(const char *format, ...)
 {
@@ -17,32 +17,33 @@ for (i = 0; format[i] != '\0'; i++)
 if (format[i] != '%')
 {
 putchr(format[i]);
-char_count++;
 }
-else if (format[i] == '%' && format[i + 1] == 'c')
+else if (format[i] == '%' && format[i + 1])
+{
+if (format[i + 1] == 'c')
 {
 char c = va_arg(args, int);
 putchr(c);
-char_count++;
 }
-else if (format[i] == '%' && format[i + 1] == 's')
+else if (format[i + 1] == 's')
 {
 char *str = va_arg(args, char *);
 if (str == NULL || *str == '\0')
 str = "(null)";
 char_count += put_s(str);
 }
-else if (format[i] == '%' && format[i + 1] == '%')
+else if (format[i + 1] == '%')
 {
 putchr('%');
-char_count++;
 }
 else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 {
 int num = va_arg(args, int);
 char_count += put_int(num);
 }
+char_count++;
 i++;
+}
 }
 va_end(args);
 return (char_count);
