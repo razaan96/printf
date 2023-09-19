@@ -1,11 +1,10 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
 /**
 *_printf - a function print formatted text to output
-*Return:the number of characters, bytes and numbers printed
-*@format: parameter
-*@...:argument
+*Return: The number of characters and bytes printed
+*@format: The format string
+*@...: Additional arguments
 */
 int _printf(const char *format, ...)
 {
@@ -19,24 +18,31 @@ for (i = 0; format[i] != '\0'; i++)
 if (format[i] != '%')
 {
 putchr(format[i]);
+char_count++;
 }
 else if (format[i] == '%' && format[i + 1] == 'c')
 {
-putchr(va_arg(args, int));
-i++;
+char c = va_arg(args, int);
+putchr(c);
+char_count++, i++;
 }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
-int leng = put_s(va_arg(args, char *));
-i++;
-char_count += (leng - 1);
+char *str = va_arg(args, char *);
+if (str)
+{
+char_count += put_s(str);
+}
+else
+{
+char_count += put_s("(null)");
+}
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
-i++;
+char_count++, i++;
 }
-char_count += 1;
 }
 va_end(args);
 return (char_count);
