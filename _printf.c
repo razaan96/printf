@@ -2,7 +2,6 @@
 /**
 *_printf - a function print formatted text to output
 *@format: The format string
-*@...: Additional arguments
 *Return: The number of characters and bytes printed
 */
 int _printf(const char *format, ...)
