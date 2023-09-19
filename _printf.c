@@ -24,11 +24,11 @@ i++; }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
 char *str;
-str = (va_arg(args, char *));
-if (str == NULL)
+str = va_arg(args, char *);
+if (!str)
 {
 str = "(null)";
-char_count += (put_s(str));
+char_count += (put_s(str) - 1);
 i++; }
 else
 {
