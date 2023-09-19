@@ -7,7 +7,7 @@
 */
 int put_s(char *string)
 {
-int count = 0;
+int i, count = 0;
 
 if (string)
 {
@@ -15,10 +15,8 @@ while (string[count] != '\0')
 {
 count++;
 }
-if (count > 0)
-{
-write(1, string, count);
-}
+for (i = 0; i < count; i++)
+putchr(string[i]);
 }
 return (count);
 }
