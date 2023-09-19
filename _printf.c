@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-unsigned int pret = 0, i, char_count = 0;
+unsigned int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 va_start(args, format);
@@ -38,8 +38,7 @@ else
 {
 putchr('%');
 }
-pret += 1;
 }
 va_end(args);
-return (pret);
+return (char_count);
 }
