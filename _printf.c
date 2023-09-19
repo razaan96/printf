@@ -44,5 +44,5 @@ putchr('%');
 pfret += 1;
 }
 va_end(args);
-return (char_count);
+return (pfret);
 }
