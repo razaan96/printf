@@ -1,14 +1,14 @@
 #include "main.h"
 /**
 *_printf - a function print formatted text to output
-*Return: The number of characters and bytes printed
 *@format: The format string
-*@...: Additional arguments
+*Return: The number of characters and bytes printed
+*@...:Additional argument
 */
 int _printf(const char *format, ...)
 {
 va_list args;
-int i, char_count = 0;
+unsigned int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 if (format[0] == '%' && format[1] == ' ' && !format[2])
@@ -19,35 +19,30 @@ for (i = 0; format && format[i] != '\0'; i++)
 if (format[i] != '%')
 {
 putchr(format[i]);
-char_count++;
 }
 else if (format[i] == '%' && format[i + 1] == 'c')
 {
-char c = va_arg(args, int);
-putchr(c);
-char_count++;
+putchr(va_arg(args, int));
 i++;
 }
 else if (format[i] == '%' && format[i + 1] == 's')
 {
-char *str = va_arg(args, char *);
-if (*str)
-{
-char_count += put_s(str);
+int leng = put_s(va_arg(args, char *));
+char_count += (leng - 1);
 i++;
-}
-else
-{
-char_count += put_s("(null)");
-i++;
-}
 }
 else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
-char_count++;
 i++;
 }
+else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+{
+int leng = va_arg(args, int);
+char_count += put_int(leng);
+i++;
+}
+char_count += 1;
 }
 va_end(args);
 return (char_count);
