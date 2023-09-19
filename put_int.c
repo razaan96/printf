@@ -7,31 +7,16 @@
 */
 int put_int(int in)
 {
-int count = 0;
-int reversed = 0;
+int i = 0;
 if (in < 0)
 {
-write(1, "-", 1);
-count++;
+i += putchr('-');
 in = -in;
 }
-if (in == 0)
+if (in / 10 != 0)
 {
-write(1, "0", 1);
-return (1);
+i += put_int(in / 10);
 }
-while (in > 0)
-{
-reversed = reversed * 10 + (in % 10);
-in /= 10;
-count++;
-}
-while (reversed > 0)
-{
-char digit = '0' + (reversed % 10);
-write(1, &digit, 1);
-reversed /= 10;
-count++;
-}
-return (count);
+i += putchr('0' + (in % 10));
+return (i);
 }
