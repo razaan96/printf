@@ -3,11 +3,12 @@
 *_printf - a function print formatted text to output
 *@format: The format string
 *Return: The number of characters and bytes printed
+*@...:Additional argument
 */
 int _printf(const char *format, ...)
 {
 va_list args;
-int i, char_count = 0;
+unsigned int i, char_count = 0;
 if (!format || (format[0] == '%' && format[1] == '\0'))
 return (-1);
 va_start(args, format);
@@ -19,28 +20,27 @@ putchr(format[i]);
 }
 else if (format[i] == '%' && format[i + 1] == 'c')
 {
-char c = va_arg(args, int);
-putchr(c);
+putchr(va_arg(args, int));
 i++;
 }
-else if (format[i + 1] == 's')
+else if (format[i] == '%' && format[i + 1] == 's')
 {
-char *str = va_arg(args, char *);
-if (str == NULL || *str == '\0')
-char_count += put_s(str);
+int leng = put_s(va_arg(args, char *));
+char_count += (leng - 1);
 i++;
 }
-else if (format[i + 1] == '%')
+else if (format[i] == '%' && format[i + 1] == '%')
 {
 putchr('%');
 i++;
 }
 else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 {
-int num = va_arg(args, int);
-char_count += put_int(num);
+int leng = va_arg(args, int);
+char_count += put_int(leng);
 i++;
 }
+char_count += 1;
 }
 va_end(args);
 return (char_count);
