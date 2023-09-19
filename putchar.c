@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-*putchr - afunction
+*putchr - a function
 *@c:parameter
 *Return:write
 */

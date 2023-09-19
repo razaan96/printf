@@ -1,5 +1,5 @@
-#ifndef HEADER_H
-#define HEADER_H
+#ifndef MAIN_H_
+#define MAIN_H_
 
 /* C standard library header files */
 #include <stdarg.h>
@@ -13,4 +13,4 @@ int put_int(int integer);
 int my_puts(char *string);
 int getint(int number);
 
-#endif /* HEADER_H */
+#endif
